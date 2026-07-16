@@ -10,9 +10,11 @@ const TrustedBy: React.FC = () => {
         <div className="trusted-inner">
           <div className="trusted-line">Trusted by thousands of businesses and professionals</div>
           <div className="logos">
-            {logos.map((l) => (
-              <div key={l} className="logo-item">{l}</div>
-            ))}
+            <div className="logos-inner">
+              {logos.concat(logos).map((l, idx) => (
+                <div key={`${l}-${idx}`} className="logo-item">{l}</div>
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -11,8 +11,8 @@ const CTA: React.FC = () => {
           <h3>Take ServeNaija Everywhere</h3>
           <p>Get the app and connect with customers, professionals and businesses near you.</p>
           <div className="cta-badges">
-            <span className="badge-app">Google Play</span>
-            <span className="badge-app">App Store</span>
+            <img src="/google-play-badge.svg" alt="Google Play" style={{height:40}} />
+            <img src="/app-store-badge.svg" alt="App Store" style={{height:40}} />
           </div>
         </div>
 

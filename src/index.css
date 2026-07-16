@@ -16,9 +16,10 @@
   --muted: rgba(0,0,0,0.04);
   --footer-bg: #0b1a13;
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --sans: Inter, system-ui, 'Segoe UI', Roboto, sans-serif;
+  --heading: Poppins, Inter, system-ui, 'Segoe UI', Roboto, sans-serif;
   --mono: ui-monospace, Consolas, monospace;
+  --transition: 180ms;
 
   font: 18px/145% var(--sans);
   letter-spacing: 0.18px;
@@ -70,6 +71,12 @@
 body {
   margin: 0;
 }
+
+html{scroll-behavior:smooth}
+
+/* global transitions */
+a,button{transition:all var(--transition) ease}
+
 
 h1,
 h2 {

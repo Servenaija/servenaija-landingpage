@@ -26,10 +26,10 @@ const Hero: React.FC = () => {
 
           <div className="store-links">
             <a className="store google" href="#">
-              <span className="badge">Google Play</span>
+              <img src="/google-play-badge.svg" alt="Google Play" style={{height:40}} />
             </a>
             <a className="store apple" href="#"> 
-              <span className="badge">App Store</span>
+              <img src="/app-store-badge.svg" alt="App Store" style={{height:40}} />
             </a>
           </div>
         </div>
