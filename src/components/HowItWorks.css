@@ -1,0 +1,8 @@
+.how-section{padding:22px 0}
+.how-grid{display:flex;gap:18px;justify-content:center;flex-wrap:wrap}
+.how-step{display:flex;gap:12px;align-items:center;background:linear-gradient(180deg,#fff,#fbfcfd);padding:12px 18px;border-radius:10px;min-width:180px;box-shadow:var(--shadow)}
+.how-num{width:42px;height:42px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800}
+.how-title{font-weight:700}
+.how-desc{font-size:13px;color:var(--text);margin-top:4px}
+
+@media (max-width:720px){.how-step{min-width:140px}}

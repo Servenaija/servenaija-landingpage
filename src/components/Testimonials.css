@@ -1,0 +1,9 @@
+.testimonials{padding:26px 0}
+.test-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:12px}
+.test-card{background:linear-gradient(180deg,#fff,#fbfcfd);padding:16px;border-radius:12px;min-height:120px;display:flex;flex-direction:column;gap:8px}
+.stars{color:var(--brand);font-weight:800}
+.test-text{color:var(--text)}
+.test-author{margin-top:auto;font-weight:700}
+
+@media (max-width:1000px){.test-grid{grid-template-columns:repeat(2,1fr)}}
+@media (max-width:720px){.test-grid{grid-template-columns:1fr}}

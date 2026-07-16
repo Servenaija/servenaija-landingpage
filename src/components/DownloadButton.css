@@ -1,0 +1,16 @@
+.download-btn{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  background:var(--brand);
+  color:#fff;
+  border:0;
+  padding:10px 14px;
+  border-radius:8px;
+  font-weight:600;
+  cursor:pointer;
+  box-shadow:var(--shadow);
+}
+.download-btn svg{opacity:0.95}
+.download-btn.small{padding:8px 10px;font-size:14px}
+.download-btn.outline{background:transparent;color:var(--brand);border:1px solid rgba(0,0,0,0.06)}

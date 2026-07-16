@@ -1,0 +1,9 @@
+.final-cta{padding:28px 0;background:linear-gradient(90deg,#0f7f5e,#0aa36d);color:#fff;border-radius:10px;margin-top:20px}
+.final-inner{display:flex;align-items:center;justify-content:space-between;gap:18px}
+.final-left h2{margin:0}
+.final-left p{margin:8px 0 12px}
+.final-actions{display:flex;gap:12px}
+.final-right .phone-hero{width:180px;height:340px;border-radius:20px;overflow:hidden;background:linear-gradient(180deg,#fff,#eef8f1);display:flex;align-items:center;justify-content:center;box-shadow:var(--shadow)}
+.final-right img{width:92%}
+
+@media (max-width:880px){.final-inner{flex-direction:column;align-items:center;text-align:center}.final-right{margin-top:12px}}

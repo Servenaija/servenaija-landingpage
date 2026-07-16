@@ -8,8 +8,13 @@
   --accent-bg: rgba(170, 59, 255, 0.1);
   --accent-border: rgba(170, 59, 255, 0.5);
   --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+
+  /* Brand colors for ServeNaija clone */
+  --brand: #13a86b;
+  --brand-dark: #0e7f52;
+  --muted: rgba(0,0,0,0.04);
+  --footer-bg: #0b1a13;
 
   --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
@@ -109,3 +114,10 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+/* Layout helpers */
+.container{width:1126px;max-width:100%;margin:0 auto;padding:0 20px}
+.landing-root{display:flex;flex-direction:column;min-height:100vh}
+
+.muted{background:var(--muted)}
+
