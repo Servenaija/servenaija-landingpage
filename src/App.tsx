@@ -1,41 +1,17 @@
-import {
-  EarningOpportunitiesSection,
-  FaqAndSiteFooterSection,
-  HeroSection,
-  LeadershipTestimonialsSection,
-  MarketplaceCategoriesSection,
-  ScrollRevealSection,
-  WhyChooseSection,
-} from './components'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import Navbar from './components/layout/Header'
+import LandingPage from './pages/landingpage'
 import './App.css'
 
 function App() {
   return (
-    <>
-      <ScrollRevealSection delay={0}>
-        <HeroSection />
-      </ScrollRevealSection>
-
-      <ScrollRevealSection delay={80}>
-        <MarketplaceCategoriesSection />
-      </ScrollRevealSection>
-
-      <ScrollRevealSection delay={110}>
-        <WhyChooseSection />
-      </ScrollRevealSection>
-
-      <ScrollRevealSection delay={140}>
-        <EarningOpportunitiesSection />
-      </ScrollRevealSection>
-
-      <ScrollRevealSection delay={170}>
-        <LeadershipTestimonialsSection />
-      </ScrollRevealSection>
-
-      <ScrollRevealSection delay={200}>
-        <FaqAndSiteFooterSection />
-      </ScrollRevealSection>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Navbar />}>
+          <Route index element={<LandingPage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 

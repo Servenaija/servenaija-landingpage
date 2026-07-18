@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useState } from 'react'
+import ceo from '../assets/ceo.png'
+import gmd from '../assets/gmd.png'
 
 type Props = { className?: string }
 
@@ -8,18 +10,21 @@ const leaders = [
     role: 'Chief Executive Officer (CEO)',
     bio: 'Visionary leader with expertise in business strategy, innovation and digital transformation.',
     initials: 'JE',
+    image: ceo, // Add your image path here
   },
   {
     name: 'Mrs. Chioma Okafor',
-    role: 'Managing Director (MD)',
+    role: 'General Managing Director (MD)',
     bio: 'Seasoned professional passionate about operational excellence and business growth.',
     initials: 'CO',
+    image: gmd, // Add your image path here
   },
   {
     name: 'Mr. Tunde Adeyemi',
     role: 'Chief Financial Officer (CFO)',
     bio: 'Finance expert focused on financial strategy, governance and sustainable value creation.',
     initials: 'TA',
+    image: '/images/leaders/tunde-adeyemi.jpg', // Add your image path here
   },
 ]
 
@@ -30,6 +35,7 @@ const testimonials = [
     author: 'Adebayo T.',
     location: 'Lagos',
     initials: 'AT',
+    avatar: '/images/testimonials/adebayo.jpg', // Add your image path here
   },
   {
     id: 'blessing-abuja',
@@ -37,6 +43,7 @@ const testimonials = [
     author: 'Blessing E.',
     location: 'Abuja',
     initials: 'BE',
+    avatar: '/images/testimonials/blessing.jpg', // Add your image path here
   },
   {
     id: 'chinedu-enugu',
@@ -44,6 +51,7 @@ const testimonials = [
     author: 'Chinedu M.',
     location: 'Enugu',
     initials: 'CM',
+    avatar: '/images/testimonials/chinedu.jpg', // Add your image path here
   },
   {
     id: 'halimat-kano',
@@ -51,12 +59,14 @@ const testimonials = [
     author: 'Halimat R.',
     location: 'Kano',
     initials: 'HR',
+    avatar: '/images/testimonials/halimat.jpg', // Add your image path here
   },
 ]
 
 export default function LeadershipTestimonialsSection({ className }: Props) {
   const [startIndex, setStartIndex] = useState(0)
   const [slidesToShow, setSlidesToShow] = useState(3)
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({})
 
   useEffect(() => {
     const updateSlidesToShow = () => {
@@ -100,6 +110,10 @@ export default function LeadershipTestimonialsSection({ className }: Props) {
     setStartIndex((current) => (current + 1) % testimonials.length)
   }
 
+  const handleImageError = (id: string) => {
+    setImageErrors(prev => ({ ...prev, [id]: true }))
+  }
+
   return (
     <section className={`section-four ${className ?? ''}`.trim()}>
       <p className="section-four__eyebrow">Meet our leadership</p>
@@ -108,7 +122,17 @@ export default function LeadershipTestimonialsSection({ className }: Props) {
         {leaders.map((leader) => (
           <article key={leader.name} className="section-four__leader-card">
             <div className="section-four__leader-photo" aria-hidden="true">
-              <span>{leader.initials}</span>
+              {!imageErrors[leader.name] && leader.image ? (
+                <img 
+                  src={leader.image} 
+                  alt={leader.name}
+                  className="section-four__leader-image"
+                  onError={() => handleImageError(leader.name)}
+                  loading="lazy"
+                />
+              ) : (
+                <span>{leader.initials}</span>
+              )}
             </div>
 
             <div className="section-four__leader-content">
@@ -140,7 +164,17 @@ export default function LeadershipTestimonialsSection({ className }: Props) {
               <p className="section-four__quote">“{item.quote}”</p>
               <div className="section-four__author">
                 <span className="section-four__author-avatar" aria-hidden="true">
-                  {item.initials}
+                  {!imageErrors[item.id] && item.avatar ? (
+                    <img 
+                      src={item.avatar} 
+                      alt={item.author}
+                      className="section-four__author-image"
+                      onError={() => handleImageError(item.id)}
+                      loading="lazy"
+                    />
+                  ) : (
+                    item.initials
+                  )}
                 </span>
                 <div>
                   <p className="section-four__author-name">{item.author}</p>

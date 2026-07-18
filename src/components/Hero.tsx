@@ -1,4 +1,10 @@
 import middleTwoImage from '../assets/middle2.png'
+import {
+  Users,
+  Building2,
+  UserCog,
+  MapPin,
+} from 'lucide-react'
 
 type Props = { className?: string }
 
@@ -12,10 +18,10 @@ const benefits = [
 ]
 
 const stats = [
-  { icon: '👥', value: '1M+', label: 'Future Customers' },
-  { icon: '🏢', value: '100K+', label: 'Businesses' },
-  { icon: '🧑‍🔧', value: '50K+', label: 'Professionals' },
-  { icon: '🗺️', value: '36', label: 'States Coverage' },
+  { icon: Users, value: '1M+', label: 'Future Customers' },
+  { icon: Building2, value: '100K+', label: 'Businesses' },
+  { icon: UserCog, value: '50K+', label: 'Professionals' },
+  { icon: MapPin, value: '36', label: 'States Coverage' },
 ]
 
 const steps = [
@@ -53,15 +59,18 @@ export default function WhyChooseSection({ className }: Props) {
         </div>
 
         <div className="section-two__stats" aria-label="Marketplace stats">
-          {stats.map((item) => (
-            <article key={item.label} className="section-two__stat-card">
-              <span className="section-two__stat-icon" aria-hidden="true">
-                {item.icon}
-              </span>
-              <p className="section-two__stat-value">{item.value}</p>
-              <p className="section-two__stat-label">{item.label}</p>
-            </article>
-          ))}
+          {stats.map((item) => {
+            const Icon = item.icon
+            return (
+              <article key={item.label} className="section-two__stat-card">
+                <span className="section-two__stat-icon" aria-hidden="true">
+                  <Icon size={20} strokeWidth={2} />
+                </span>
+                <p className="section-two__stat-value">{item.value}</p>
+                <p className="section-two__stat-label">{item.label}</p>
+              </article>
+            )
+          })}
         </div>
       </div>
 
