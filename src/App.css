@@ -12,7 +12,47 @@
     linear-gradient(180deg, #f8fbfa 0%, #f4f8f7 55%, #f7f9fa 100%),
     radial-gradient(circle at 12% 20%, rgba(19, 153, 91, 0.06), transparent 28%);
 }
+/* Show legal links in mobile menu, hide on desktop */
+.top-nav__mobile-legal {
+  display: none;
+}
 
+/* Hide full legal buttons on small screens, show only Download */
+@media (max-width: 900px) {
+  .top-nav__actions .top-nav__signin {
+    display: none;
+  }
+
+  .top-nav__mobile-legal {
+    display: block;
+  }
+
+  .top-nav__actions {
+    gap: 6px;
+  }
+
+  .top-nav__download {
+    font-size: 0.8rem;
+    padding: 0 10px;
+    min-height: 36px;
+  }
+}
+
+/* On desktop: show all 4 buttons in one row */
+@media (min-width: 901px) {
+  .top-nav__actions {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+  }
+
+  .top-nav__actions a {
+    font-size: 0.8rem;
+    padding: 0 12px;
+    min-height: 38px;
+    white-space: nowrap;
+  }
+}
 .top-nav {
   position: sticky;
   top: 0;
