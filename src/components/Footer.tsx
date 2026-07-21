@@ -10,21 +10,21 @@ const leaders = [
     role: 'Chief Executive Officer (CEO)',
     bio: 'Visionary leader with expertise in business strategy, innovation and digital transformation.',
     initials: 'JE',
-    image: ceo, // Add your image path here
+    image: ceo, 
   },
   {
     name: 'Mrs. Chioma Okafor',
-    role: 'General Managing Director (MD)',
+    role: 'General Managing Director (GMD)',
     bio: 'Seasoned professional passionate about operational excellence and business growth.',
     initials: 'CO',
-    image: gmd, // Add your image path here
+    image: gmd, 
   },
   {
     name: 'Mr. Tunde Adeyemi',
-    role: 'Chief Financial Officer (CFO)',
+    role: 'Chief Operation Officer (COO)',
     bio: 'Finance expert focused on financial strategy, governance and sustainable value creation.',
     initials: 'TA',
-    image: '/images/leaders/tunde-adeyemi.jpg', // Add your image path here
+    image: '/images/leaders/tunde-adeyemi.jpg', 
   },
 ]
 
@@ -35,7 +35,7 @@ const testimonials = [
     author: 'Adebayo T.',
     location: 'Lagos',
     initials: 'AT',
-    avatar: '/images/testimonials/adebayo.jpg', // Add your image path here
+    avatar: '/images/testimonials/adebayo.jpg', 
   },
   {
     id: 'blessing-abuja',
@@ -43,7 +43,7 @@ const testimonials = [
     author: 'Blessing E.',
     location: 'Abuja',
     initials: 'BE',
-    avatar: '/images/testimonials/blessing.jpg', // Add your image path here
+    avatar: '/images/testimonials/blessing.jpg', 
   },
   {
     id: 'chinedu-enugu',
@@ -51,7 +51,7 @@ const testimonials = [
     author: 'Chinedu M.',
     location: 'Enugu',
     initials: 'CM',
-    avatar: '/images/testimonials/chinedu.jpg', // Add your image path here
+    avatar: '/images/testimonials/chinedu.jpg', 
   },
   {
     id: 'halimat-kano',
@@ -59,7 +59,7 @@ const testimonials = [
     author: 'Halimat R.',
     location: 'Kano',
     initials: 'HR',
-    avatar: '/images/testimonials/halimat.jpg', // Add your image path here
+    avatar: '/images/testimonials/halimat.jpg', 
   },
 ]
 
