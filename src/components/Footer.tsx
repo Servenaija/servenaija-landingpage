@@ -1,30 +1,31 @@
 import { useEffect, useMemo, useState } from 'react'
 import ceo from '../assets/ceo.png'
-import gmd from '../assets/gmd.png'
+import GMD from '../assets/GMD.png'
+import coo from '../assets/COO.png';
 
 type Props = { className?: string }
 
 const leaders = [
   {
-    name: 'Dr. John A. Eze',
+    name: 'Ibor Saviour Enang',
     role: 'Chief Executive Officer (CEO)',
-    bio: 'Visionary leader with expertise in business strategy, innovation and digital transformation.',
+    bio: 'Visionary leader with expertise in business strategy, innovation, and digital transformation. He is responsible for setting the overall direction, driving growth, and leading ServeNaija\'s mission to revolutionize the service industry in Nigeria.',
     initials: 'JE',
-    image: ceo, 
+    image: ceo,
   },
   {
-    name: 'Mrs. Chioma Okafor',
+    name: 'Lucky Emeka Joseph',
     role: 'General Managing Director (GMD)',
-    bio: 'Seasoned professional passionate about operational excellence and business growth.',
+    bio: 'Seasoned professional passionate about operational excellence and business growth. He oversees the day-to-day management, strategic execution, and ensures alignment with the company\'s long-term vision and goals.',
     initials: 'CO',
-    image: gmd, 
+    image: GMD,
   },
   {
-    name: 'Mr. Tunde Adeyemi',
-    role: 'Chief Operation Officer (COO)',
-    bio: 'Finance expert focused on financial strategy, governance and sustainable value creation.',
+    name: 'Victoria Ekene N.',
+    role: 'Chief Operating Officer (COO)',
+    bio: 'Operations strategist with expertise in process optimization, operational efficiency, and business scaling. She is responsible for driving seamless service delivery and ensuring ServeNaija\'s operations run at peak performance.',
     initials: 'TA',
-    image: '/images/leaders/tunde-adeyemi.jpg', 
+    image: coo,
   },
 ]
 
@@ -35,7 +36,7 @@ const testimonials = [
     author: 'Adebayo T.',
     location: 'Lagos',
     initials: 'AT',
-    avatar: '/images/testimonials/adebayo.jpg', 
+    avatar: '/images/testimonials/adebayo.jpg',
   },
   {
     id: 'blessing-abuja',
@@ -43,7 +44,7 @@ const testimonials = [
     author: 'Blessing E.',
     location: 'Abuja',
     initials: 'BE',
-    avatar: '/images/testimonials/blessing.jpg', 
+    avatar: '/images/testimonials/blessing.jpg',
   },
   {
     id: 'chinedu-enugu',
@@ -51,7 +52,7 @@ const testimonials = [
     author: 'Chinedu M.',
     location: 'Enugu',
     initials: 'CM',
-    avatar: '/images/testimonials/chinedu.jpg', 
+    avatar: '/images/testimonials/chinedu.jpg',
   },
   {
     id: 'halimat-kano',
@@ -59,7 +60,7 @@ const testimonials = [
     author: 'Halimat R.',
     location: 'Kano',
     initials: 'HR',
-    avatar: '/images/testimonials/halimat.jpg', 
+    avatar: '/images/testimonials/halimat.jpg',
   },
 ]
 
@@ -123,8 +124,8 @@ export default function LeadershipTestimonialsSection({ className }: Props) {
           <article key={leader.name} className="section-four__leader-card">
             <div className="section-four__leader-photo" aria-hidden="true">
               {!imageErrors[leader.name] && leader.image ? (
-                <img 
-                  src={leader.image} 
+                <img
+                  src={leader.image}
                   alt={leader.name}
                   className="section-four__leader-image"
                   onError={() => handleImageError(leader.name)}
@@ -165,8 +166,8 @@ export default function LeadershipTestimonialsSection({ className }: Props) {
               <div className="section-four__author">
                 <span className="section-four__author-avatar" aria-hidden="true">
                   {!imageErrors[item.id] && item.avatar ? (
-                    <img 
-                      src={item.avatar} 
+                    <img
+                      src={item.avatar}
                       alt={item.author}
                       className="section-four__author-image"
                       onError={() => handleImageError(item.id)}
