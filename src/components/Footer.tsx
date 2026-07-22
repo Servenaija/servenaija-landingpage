@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import ceo from '../assets/ceo.png'
-import GMD from '../assets/GMD.png'
-import coo from '../assets/COO.png';
+import GMD from '../assets/gmd.png'
+import coo from '../assets/coo.png';
 
 type Props = { className?: string }
 
