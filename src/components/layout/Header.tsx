@@ -1,21 +1,42 @@
 import { useState } from 'react'
 import logoImage from '../../assets/logo.png'
-import { Outlet } from 'react-router-dom'
+import { Link, NavLink, Outlet } from 'react-router-dom'
 import wordmarkImage from '../../assets/serveNaija-text.png'
+import { useDownloadApp } from '../../context/useDownloadApp'
 
 type Props = { className?: string }
+
+const navItems = [
+  { label: 'Home', to: '/', end: true },
+  { label: 'Marketplace', to: '/marketplace', end: false },
+  { label: 'Services', to: '/services', end: false },
+  { label: 'Businesses', to: '/businesses', end: false },
+  { label: 'Agents', to: '/agents', end: false },
+  { label: 'About Us', to: '/about', end: false },
+  { label: 'Contact', to: '/contact', end: false },
+]
+
+const legalItems = [
+  { label: 'Terms & Conditions', to: '/terms' },
+  { label: 'Refund Policy', to: '/refund-policy' },
+  { label: 'Privacy Policy', to: '/privacy' },
+]
 
 export default function Navbar({ className }: Props) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const closeMenu = () => setIsMenuOpen(false)
+  const { openDownloadApp } = useDownloadApp()
+
+  const navLinkClass = ({ isActive }: { isActive: boolean }) =>
+    `${isActive ? 'is-active' : ''}`.trim()
 
   return (
     <>
       <nav className={`top-nav ${className ?? ''}`.trim()} aria-label="Main navigation">
-        <a href="#" className="top-nav__brand" aria-label="ServeNaija home" onClick={closeMenu}>
+        <Link to="/" className="top-nav__brand" aria-label="ServeNaija home" onClick={closeMenu}>
           <img src={logoImage} alt="" aria-hidden="true" className="top-nav__logo" />
           <img src={wordmarkImage} alt="ServeNaija" className="top-nav__wordmark" />
-        </a>
+        </Link>
 
         <button
           type="button"
@@ -35,31 +56,33 @@ export default function Navbar({ className }: Props) {
           className={`top-nav__menu ${isMenuOpen ? 'is-open' : ''}`.trim()}
         >
           <ul className="top-nav__links">
-            <li><a href="/" onClick={closeMenu}>Home</a></li>
-            <li><a href="#" onClick={closeMenu}>Marketplace</a></li>
-            <li><a href="#" onClick={closeMenu}>Services</a></li>
-            <li><a href="#" onClick={closeMenu}>Businesses</a></li>
-            <li><a href="#" onClick={closeMenu}>Agents</a></li>
-            <li><a href="#" onClick={closeMenu}>About Us</a></li>
-            <li><a href="#" onClick={closeMenu}>Contact</a></li>
+            {navItems.map((item) => (
+              <li key={item.to}>
+                <NavLink to={item.to} end={item.end} className={navLinkClass} onClick={closeMenu}>
+                  {item.label}
+                </NavLink>
+              </li>
+            ))}
             {/* Legal links in mobile menu */}
-            <li className="top-nav__mobile-legal">
-              <a href="/terms" onClick={closeMenu}>Terms & Conditions</a>
-            </li>
-            <li className="top-nav__mobile-legal">
-              <a href="/refund-policy" onClick={closeMenu}>Refund Policy</a>
-            </li>
-            <li className="top-nav__mobile-legal">
-              <a href="/privacy" onClick={closeMenu}>Privacy Policy</a>
-            </li>
+            {legalItems.map((item) => (
+              <li className="top-nav__mobile-legal" key={item.to}>
+                <Link to={item.to} onClick={closeMenu}>{item.label}</Link>
+              </li>
+            ))}
           </ul>
 
           {/* Buttons for desktop */}
           <div className="top-nav__actions">
-            <a href="/terms" className="top-nav__signin" onClick={closeMenu}>Terms</a>
-            <a href="/refund-policy" className="top-nav__signin" onClick={closeMenu}>Refunds</a>
-            <a href="/privacy" className="top-nav__signin" onClick={closeMenu}>Privacy</a>
-            <a href="#" className="top-nav__download" onClick={closeMenu}>Download App</a>
+            <Link to="/terms" className="top-nav__signin" onClick={closeMenu}>Terms</Link>
+            <Link to="/refund-policy" className="top-nav__signin" onClick={closeMenu}>Refunds</Link>
+            <Link to="/privacy" className="top-nav__signin" onClick={closeMenu}>Privacy</Link>
+            <button
+              type="button"
+              className="top-nav__download"
+              onClick={() => { closeMenu(); openDownloadApp() }}
+            >
+              Download App
+            </button>
           </div>
         </div>
       </nav>

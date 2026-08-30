@@ -1,8 +1,16 @@
 // src/pages/RefundPolicy.tsx
+import { SEO } from '../components'
 
 export default function RefundPolicyPage() {
   return (
-    <div style={styles.wrapper}>
+    <>
+      <SEO
+        title="Refund Policy"
+        description="Read ServeNaija's Refund Policy. Learn about refund eligibility, cancellation terms, and how payments are handled through our secure escrow system."
+        keywords="refund policy, cancellation, payment protection, escrow, ServeNaija refunds"
+        canonicalUrl="/refund-policy"
+      />
+      <div style={styles.wrapper}>
       <div style={styles.container}>
         <h1 style={styles.heading}>SERVENAIJA MARKETPLACE LIMITED</h1>
         <h2 style={styles.subheading}>Refund Policy</h2>
@@ -164,7 +172,8 @@ export default function RefundPolicyPage() {
           For payment issues, refund requests, or disputes, please contact ServeNaija Customer Support through the official support channels provided on the Platform.
         </Section>
       </div>
-    </div>
+      </div>
+    </>
   )
 }
 

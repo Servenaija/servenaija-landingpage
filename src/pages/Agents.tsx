@@ -1,0 +1,252 @@
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useDownloadApp } from '../context/useDownloadApp'
+import { SEO } from '../components'
+import agentHeroImage from '../assets/footer.png'
+
+// Agent pricing: registration fee ₦5,000, earn 6% from provider bookings + ₦1,500 from customer bookings
+const REGISTRATION_FEE = 5000
+const PROVIDER_COMMISSION_PERCENT = 0.06 // 6%
+const CUSTOMER_COMMISSION_FLAT = 1500 // ₦1,500 per customer booking
+
+const agentStats = [
+  { value: '₦250k', label: 'Top monthly earner' },
+  { value: '36', label: 'States covered' },
+  { value: '4.8★', label: 'Agent rating' },
+]
+
+const perks = [
+  { emoji: '💸', title: 'Weekly payouts', text: 'Cash out every Friday — no minimum threshold.' },
+  { emoji: '🎓', title: 'Free training', text: 'Get certified with the ServeNaija agent academy.' },
+  { emoji: '🛡️', title: 'Verified leads', text: 'Every job is ID-checked before it reaches you.' },
+  { emoji: '🕒', title: 'Flexible hours', text: 'Work full-time or as a side hustle — you choose.' },
+]
+
+const agentSteps = [
+  { title: 'Apply in the app', text: `Pay the ₦${REGISTRATION_FEE.toLocaleString('en-NG')} registration fee and create your agent profile.` },
+  { title: 'Get verified for free', text: 'Submit your ID — our team confirms you within 48 hours.' },
+  { title: 'Start referring', text: 'Refer providers and customers to earn commission on every booking.' },
+  { title: 'Earn & withdraw weekly', text: 'Track commissions in your wallet and cash out every Friday.' },
+]
+
+const requirements = [
+  'Be 18+ with a valid government ID',
+  'Own a smartphone (Android or iOS)',
+  'Reside in a ServeNaija service area',
+  'Pay the ₦5,000 registration fee',
+]
+
+const faqs = [
+  { q: 'How much does it cost to become an agent?', a: `The registration fee is ₦${REGISTRATION_FEE.toLocaleString('en-NG')}. This covers your agent profile, training, and verification.` },
+  { q: 'How do I earn as an agent?', a: `You earn 6% commission from every provider booking you refer, plus ₦${CUSTOMER_COMMISSION_FLAT.toLocaleString('en-NG')} for every customer you bring to the platform.` },
+  { q: 'When do I get paid?', a: 'Commissions settle into your ServeNaija wallet and are paid out to your bank account every Friday.' },
+  { q: 'Can I do this part-time?', a: 'Yes — you control your availability. Many agents serve evenings and weekends.' },
+  { q: 'Which states do you operate in?', a: 'We currently cover all 36 states plus the FCT, with more service areas added monthly.' },
+]
+
+export default function AgentsPage() {
+  const { openDownloadApp } = useDownloadApp()
+  const [providerBookingsPerMonth, setProviderBookingsPerMonth] = useState(10)
+  const [customerBookingsPerMonth, setCustomerBookingsPerMonth] = useState(5)
+  const [openFaq, setOpenFaq] = useState<number | null>(0)
+
+  // Agent pricing: registration fee ₦5,000, earn 6% from provider bookings + ₦1,500 from customer bookings
+  const avgProviderBookingValue = 25000
+  const providerCommission = providerBookingsPerMonth * avgProviderBookingValue * PROVIDER_COMMISSION_PERCENT
+  const customerCommission = customerBookingsPerMonth * CUSTOMER_COMMISSION_FLAT
+  const monthlyEarnings = providerCommission + customerCommission
+
+  return (
+    <main className="page">
+      <SEO
+        title="Become an Agent"
+        description="Earn money as a ServeNaija agent. Refer providers and customers to earn weekly commissions. Flexible hours, free training, and payouts every Friday."
+        keywords="ServeNaija agent, earn money Nigeria, agent commission, referral program, work from home Nigeria, side hustle"
+        canonicalUrl="/agents"
+      />
+      <section className="ag-hero">
+        <div className="ag-hero__inner">
+          <div className="page-hero__copy">
+            <p className="page-eyebrow">💚 ServeNaija Agents</p>
+            <h1 className="ag-hero__title">Earn big. <span>Serve your community.</span></h1>
+            <p className="ag-hero__text">
+              Become a ServeNaija Agent — earn 6% from provider referrals and ₦1,500 per customer referral. Registration fee: ₦{REGISTRATION_FEE.toLocaleString('en-NG')}.
+            </p>
+            <div className="page-hero__actions">
+              <button
+                type="button"
+                className="btn btn--light"
+                onClick={() => openDownloadApp('starting your ServeNaija agent application')}
+              >
+                Apply as an agent
+              </button>
+              <a className="btn btn--outline-light" href="#agent-calculator" onClick={(event) => { event.preventDefault(); document.getElementById('agent-calculator')?.scrollIntoView({ behavior: 'smooth' }) }}>
+                See your earnings
+              </a>
+            </div>
+            <div className="ag-hero__stats">
+              {agentStats.map((stat) => (
+                <div key={stat.label} className="ag-hero__stat">
+                  <strong>{stat.value}</strong>
+                  <span>{stat.label}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="ag-hero__media" aria-hidden="true">
+            <img src={agentHeroImage} alt="" className="ag-hero__image" />
+          </div>
+        </div>
+      </section>
+
+      <section className="page-section" id="agent-calculator">
+        <div className="page-section__inner">
+          <div className="section-head">
+            <p className="section-eyebrow">Earnings calculator</p>
+            <h2 className="section-title">See what you could be earning</h2>
+          </div>
+
+          <div className="ag-calc">
+            <div>
+              <h3>Drag to estimate your hustle</h3>
+              <p className="ag-calc__note">
+                Slide to set how many referrals you make per month - we will project your commission.
+              </p>
+              <div className="ag-calc__slider-row">
+                <label className="ag-calc__slider-label" htmlFor="ag-providers">
+                  <span>Provider referrals/month</span>
+                  <span className="ag-calc__bubble">{providerBookingsPerMonth}</span>
+                </label>
+                <input
+                  id="ag-providers"
+                  type="range"
+                  min={0}
+                  max={50}
+                  step={1}
+                  value={providerBookingsPerMonth}
+                  onChange={(event) => setProviderBookingsPerMonth(Number(event.target.value))}
+                />
+              </div>
+              <div className="ag-calc__slider-row">
+                <label className="ag-calc__slider-label" htmlFor="ag-customers">
+                  <span>Customer referrals/month</span>
+                  <span className="ag-calc__bubble">{customerBookingsPerMonth}</span>
+                </label>
+                <input
+                  id="ag-customers"
+                  type="range"
+                  min={0}
+                  max={50}
+                  step={1}
+                  value={customerBookingsPerMonth}
+                  onChange={(event) => setCustomerBookingsPerMonth(Number(event.target.value))}
+                />
+              </div>
+              <ul className="check-list">
+                {requirements.map((requirement) => (
+                  <li key={requirement}>{requirement}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="ag-calc__result">
+              <span className="ag-calc__result-label">Estimated monthly earnings</span>
+              <div className="ag-calc__result-breakdown">
+                <span>6% from providers</span>
+                <strong>₦{providerCommission.toLocaleString('en-NG', { maximumFractionDigits: 0 })}</strong>
+              </div>
+              <div className="ag-calc__result-breakdown">
+                <span>₦1,500 x {customerBookingsPerMonth} customers</span>
+                <strong>₦{customerCommission.toLocaleString('en-NG')}</strong>
+              </div>
+              <strong className="ag-calc__amount">
+                ₦{monthlyEarnings.toLocaleString('en-NG', { maximumFractionDigits: 0 })}
+              </strong>
+              <span className="ag-calc__result-meta">
+                Registration fee: ₦{REGISTRATION_FEE.toLocaleString('en-NG')}
+              </span>
+              <button
+                type="button"
+                className="btn btn--light"
+                onClick={() => openDownloadApp('starting your ServeNaija agent application')}
+              >
+                Start earning today
+              </button>
+            </div>
+          </div>
+
+          <div className="ag-perks">
+            {perks.map((perk) => (
+              <article key={perk.title} className="ag-perk-card">
+                <span className="ag-perk-card__emoji" aria-hidden="true">{perk.emoji}</span>
+                <h3>{perk.title}</h3>
+                <p>{perk.text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="page-section page-section--alt">
+        <div className="page-section__inner">
+          <div className="section-head">
+            <p className="section-eyebrow">How it works</p>
+            <h2 className="section-title">From sign-up to first payout in four steps</h2>
+          </div>
+          <ol className="ag-steps">
+            {agentSteps.map((step) => (
+              <li key={step.title}>
+                <h3>{step.title}</h3>
+                <p>{step.text}</p>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      <section className="page-section">
+        <div className="page-section__inner">
+          <div className="section-head">
+            <p className="section-eyebrow">Questions</p>
+            <h2 className="section-title">Agent FAQ</h2>
+          </div>
+          <div className="ag-faq">
+            {faqs.map((faq, index) => {
+              const isOpen = openFaq === index
+              return (
+                <div key={faq.q} className={`ag-faq__item ${isOpen ? 'is-open' : ''}`.trim()}>
+                  <button
+                    type="button"
+                    className="ag-faq__question"
+                    aria-expanded={isOpen}
+                    onClick={() => setOpenFaq(isOpen ? null : index)}
+                  >
+                    {faq.q}
+                    <span className="ag-faq__icon" aria-hidden="true">＋</span>
+                  </button>
+                  {isOpen && <p className="ag-faq__answer">{faq.a}</p>}
+                </div>
+              )
+            })}
+          </div>
+
+          <div className="page-cta">
+            <div className="page-cta__copy">
+              <h2>Ready to earn on your own terms?</h2>
+              <p>Join thousands of agents already earning with ServeNaija across Nigeria.</p>
+            </div>
+            <div className="page-cta__actions">
+              <button
+                type="button"
+                className="btn btn--light"
+                onClick={() => openDownloadApp('starting your ServeNaija agent application')}
+              >
+                Apply as an agent
+              </button>
+              <Link className="btn btn--outline-light" to="/contact">Ask a question</Link>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+  )
+}

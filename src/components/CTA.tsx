@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { Users, Store, Briefcase } from 'lucide-react'
 
 type Props = { className?: string }
@@ -8,6 +9,7 @@ const opportunities = [
     title: 'Become an Agent',
     details: 'Register businesses and service providers and earn attractive commission.',
     action: 'Join as Agent',
+    to: '/agents',
     tone: 'agent',
   },
   {
@@ -15,6 +17,7 @@ const opportunities = [
     title: 'Become a Vendor',
     details: 'List your products, reach more customers and grow your business.',
     action: 'Join as Vendor',
+    to: '/marketplace',
     tone: 'vendor',
   },
   {
@@ -22,6 +25,7 @@ const opportunities = [
     title: 'Become a Service Provider',
     details: 'Offer your services, get booked and grow your professional reputation.',
     action: 'Join as Provider',
+    to: '/services',
     tone: 'provider',
   },
 ]
@@ -46,7 +50,7 @@ export default function EarningOpportunitiesSection({ className }: Props) {
               <div className="section-three__content">
                 <h3>{item.title}</h3>
                 <p>{item.details}</p>
-                <a href="#">{item.action}</a>
+                <Link to={item.to}>{item.action}</Link>
               </div>
             </article>
           )

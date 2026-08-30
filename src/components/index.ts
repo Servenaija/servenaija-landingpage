@@ -4,6 +4,9 @@ export { default as EarningOpportunitiesSection } from './CTA'
 export { default as LeadershipTestimonialsSection } from './Footer'
 export { default as FaqAndSiteFooterSection } from './SectionFive'
 export { default as ScrollRevealSection } from './ScrollRevealSection'
+export { default as DownloadAppModal } from './DownloadAppModal'
+export { default as CategoriesModal } from './CategoriesModal'
+export { default as SEO } from './SEO'
 
 // Backward-compatible aliases for existing imports.
 export { default as Features } from './Features'

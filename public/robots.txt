@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Disallow password utilities — no SEO value
+Disallow: /forgot-password
+Disallow: /reset-password
+
+Sitemap: https://servenaija.com/sitemap.xml

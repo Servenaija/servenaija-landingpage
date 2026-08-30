@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { useDownloadApp } from '../context/useDownloadApp'
 import footerMan from '../assets/footer.png'
 import logoImage from '../assets/logo.png'
 import wordmarkImage from '../assets/serveNaija-text.png'
@@ -9,7 +11,7 @@ const faqs = [
   {
     question: 'How do I register on ServeNaija?',
     answer:
-      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae massa id libero feugiat tincidunt, sed elementum dui suscipit. Mauris commodo nunc a lorem congue, non gravida nibh interdum.',
+      'Download the ServeNaija app from Google Play or App Store, sign up with your email or phone number, and choose whether you are joining as a customer, service provider, or business. Complete your profile and start exploring services or listing your business.',
   },
   {
     question: 'How are businesses verified?',
@@ -34,31 +36,37 @@ const faqs = [
 ]
 
 const marketplaceLinks = [
-  'Products',
-  'Services',
-  'Businesses',
-  'Professionals',
-  'Categories',
+  { label: 'Products', to: '/marketplace' },
+  { label: 'Services', to: '/services' },
+  { label: 'Businesses', to: '/businesses' },
+  { label: 'Professionals', to: '/services' },
+  { label: 'Categories', to: '/marketplace' },
 ]
 
 const companyLinks = [
-  'About Us',
-  'Leadership',
-  'Careers',
-  'News & Media',
-  'Contact Us',
+  { label: 'About Us', to: '/about' },
+  { label: 'Leadership', to: '/about' },
+  { label: 'Careers', to: '/about' },
+  { label: 'News & Media', to: '/about' },
+  { label: 'Contact Us', to: '/contact' },
 ]
 
 const supportLinks = [
-  'Help Center',
-  'Privacy Policy',
-  'Terms of Service',
-  'FAQ',
-  'Safety Center',
+  { label: 'Help Center', to: '/contact' },
+  { label: 'Privacy Policy', to: '/privacy' },
+  { label: 'Terms of Service', to: '/terms' },
+  { label: 'FAQ', to: '/contact' },
+  { label: 'Safety Center', to: '/contact' },
 ]
 
 export default function FaqAndSiteFooterSection({ className }: Props) {
   const [activeFaq, setActiveFaq] = useState<number | null>(null)
+  const { openDownloadApp } = useDownloadApp()
+
+  const openStoreModal = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.preventDefault()
+    openDownloadApp()
+  }
 
   return (
     <section className={`section-five ${className ?? ''}`.trim()}>
@@ -111,12 +119,12 @@ export default function FaqAndSiteFooterSection({ className }: Props) {
         </div>
 
         <div className="section-five__cta-actions">
-          <a href="#" className="section-five__cta-btn section-five__cta-btn--accent">
+          <a href="#" className="section-five__cta-btn section-five__cta-btn--accent" onClick={openStoreModal}>
             Download App
           </a>
-          <a href="#" className="section-five__cta-btn section-five__cta-btn--light">
+          <Link to="/businesses" className="section-five__cta-btn section-five__cta-btn--light">
             Register Your Business
-          </a>
+          </Link>
         </div>
 
         <img src={footerMan} alt="Happy ServeNaija customer" className="section-five__cta-image" />
@@ -124,10 +132,10 @@ export default function FaqAndSiteFooterSection({ className }: Props) {
 
       <footer className="section-five__footer">
         <div className="section-five__brand-block">
-          <a href="#" className="section-five__brand" aria-label="ServeNaija home">
+          <Link to="/" className="section-five__brand" aria-label="ServeNaija home">
             <img src={logoImage} alt="" aria-hidden="true" className="section-five__brand-logo" />
             <img src={wordmarkImage} alt="ServeNaija" className="section-five__brand-wordmark" />
-          </a>
+          </Link>
           <p>
             Africa&apos;s trusted digital marketplace connecting people, businesses,
             services and opportunities.
@@ -137,7 +145,7 @@ export default function FaqAndSiteFooterSection({ className }: Props) {
             <a href="#" aria-label="Instagram">ig</a>
             <a href="#" aria-label="LinkedIn">in</a>
             <a href="#" aria-label="X">x</a>
-            <a href="#" aria-label="Email">@</a>
+            <a href="mailto:support@servenaija.com" aria-label="Email">@</a>
           </div>
         </div>
 
@@ -145,8 +153,8 @@ export default function FaqAndSiteFooterSection({ className }: Props) {
           <h3>Marketplace</h3>
           <ul>
             {marketplaceLinks.map((link) => (
-              <li key={link}>
-                <a href="#">{link}</a>
+              <li key={link.label}>
+                <Link to={link.to}>{link.label}</Link>
               </li>
             ))}
           </ul>
@@ -156,8 +164,8 @@ export default function FaqAndSiteFooterSection({ className }: Props) {
           <h3>Company</h3>
           <ul>
             {companyLinks.map((link) => (
-              <li key={link}>
-                <a href="#">{link}</a>
+              <li key={link.label}>
+                <Link to={link.to}>{link.label}</Link>
               </li>
             ))}
           </ul>
@@ -167,8 +175,8 @@ export default function FaqAndSiteFooterSection({ className }: Props) {
           <h3>Support</h3>
           <ul>
             {supportLinks.map((link) => (
-              <li key={link}>
-                <a href="#">{link}</a>
+              <li key={link.label}>
+                <Link to={link.to}>{link.label}</Link>
               </li>
             ))}
           </ul>
@@ -176,8 +184,8 @@ export default function FaqAndSiteFooterSection({ className }: Props) {
 
         <div className="section-five__download-block">
           <h3>Download app</h3>
-          <a href="#" className="section-five__store-badge">Google Play</a>
-          <a href="#" className="section-five__store-badge">App Store</a>
+          <a href="#" className="section-five__store-badge" onClick={openStoreModal}>Google Play</a>
+          <a href="#" className="section-five__store-badge" onClick={openStoreModal}>App Store</a>
         </div>
       </footer>
 

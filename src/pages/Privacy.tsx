@@ -1,8 +1,16 @@
 // src/pages/Privacy.tsx
+import { SEO } from '../components'
 
 export default function PrivacyPage() {
   return (
-    <div style={styles.wrapper}>
+    <>
+      <SEO
+        title="Privacy Policy"
+        description="Read ServeNaija's Privacy Policy. Learn how we collect, use, and protect your personal information in compliance with the Nigeria Data Protection Act."
+        keywords="privacy policy, data protection, personal information, Nigeria Data Protection Act, NDPA"
+        canonicalUrl="/privacy"
+      />
+      <div style={styles.wrapper}>
       <div style={styles.container}>
         <h1 style={styles.heading}>SERVENAIJA MARKETPLACE LIMITED</h1>
         <h2 style={styles.subheading}>Privacy Policy</h2>
@@ -144,7 +152,8 @@ export default function PrivacyPage() {
           <p>By creating an account, accessing, or using any ServeNaija Marketplace Limited service, you acknowledge that you have read, understood, and agreed to this Privacy Policy.</p>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   )
 }
 

@@ -1,8 +1,16 @@
 // src/pages/Terms.tsx
+import { SEO } from '../components'
 
 export default function TermsPage() {
   return (
-    <div style={styles.wrapper}>
+    <>
+      <SEO
+        title="Terms and Conditions"
+        description="Read ServeNaija's Terms and Conditions. Learn about user agreements, payment terms, and platform policies governing your use of our marketplace."
+        keywords="terms and conditions, legal, user agreement, ServeNaija policies, terms of service"
+        canonicalUrl="/terms"
+      />
+      <div style={styles.wrapper}>
       <div style={styles.container}>
         <h1 style={styles.heading}>SERVENAIJA MARKETPLACE LIMITED</h1>
         <h2 style={styles.subheading}>Terms and Conditions</h2>
@@ -443,7 +451,8 @@ export default function TermsPage() {
           <p>Approved By: Board of Directors, ServeNaija Marketplace Limited</p>
         </div>
       </div>
-    </div>
+      </div>
+    </>
   )
 }
 
