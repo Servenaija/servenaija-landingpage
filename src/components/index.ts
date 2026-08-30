@@ -6,6 +6,7 @@ export { default as FaqAndSiteFooterSection } from './SectionFive'
 export { default as ScrollRevealSection } from './ScrollRevealSection'
 export { default as DownloadAppModal } from './DownloadAppModal'
 export { default as CategoriesModal } from './CategoriesModal'
+export { FacebookIcon, XIcon, TikTokIcon, YouTubeIcon, TelegramIcon, WhatsAppIcon } from './SocialIcons'
 export { default as SEO } from './SEO'
 
 // Backward-compatible aliases for existing imports.

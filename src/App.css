@@ -440,6 +440,7 @@
 .section-five__brand-block p { margin: 10px 0 12px; color: #aac0cd; font-size: 0.96rem; line-height: 1.5; max-width: 34ch; }
 .section-five__socials { display: flex; gap: 8px; }
 .section-five__socials a { width: 28px; height: 28px; border-radius: 999px; background: #0f3a52; color: #ffffff; display: inline-flex; align-items: center; justify-content: center; text-decoration: none; font-size: 0.78rem; font-weight: 700; transition: transform 0.2s ease, background-color 0.2s ease; }
+.section-five__socials a svg { width: 14px; height: 14px; display: block; }
 .section-five__socials a:hover,
 .section-five__socials a:focus-visible { transform: translateY(-1px); background: #195271; }
 .section-five__links-block,

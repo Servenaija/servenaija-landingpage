@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { Mail } from 'lucide-react'
 import { useDownloadApp } from '../context/useDownloadApp'
+import { FacebookIcon, XIcon, TikTokIcon, YouTubeIcon, TelegramIcon, WhatsAppIcon } from './SocialIcons'
 import footerMan from '../assets/footer.png'
 import logoImage from '../assets/logo.png'
 import wordmarkImage from '../assets/serveNaija-text.png'
@@ -141,11 +143,27 @@ export default function FaqAndSiteFooterSection({ className }: Props) {
             services and opportunities.
           </p>
           <div className="section-five__socials" aria-label="Social media links">
-            <a href="#" aria-label="Facebook">f</a>
-            <a href="#" aria-label="Instagram">ig</a>
-            <a href="#" aria-label="LinkedIn">in</a>
-            <a href="#" aria-label="X">x</a>
-            <a href="mailto:support@servenaija.com" aria-label="Email">@</a>
+            <a href="https://www.facebook.com/share/1BWRL4ZQHa/" aria-label="Facebook">
+              <FacebookIcon />
+            </a>
+            <a href="https://x.com/Serve_Naija" aria-label="X (Twitter)">
+              <XIcon />
+            </a>
+            <a href="https://tiktok.com/@servenaija" aria-label="TikTok">
+              <TikTokIcon />
+            </a>
+            <a href="https://youtube.com/@servenaija?si=4Y8P0XeGNqJlbQI0" aria-label="YouTube">
+              <YouTubeIcon />
+            </a>
+            <a href="https://t.me/+vgGXTkUpPy1jMTY0" aria-label="Telegram">
+              <TelegramIcon />
+            </a>
+            <a href="https://whatsapp.com/channel/0029VbBRH0160eBZRLMBy51c" aria-label="WhatsApp">
+              <WhatsAppIcon />
+            </a>
+            <a href="mailto:support@servenaija.com" aria-label="Email">
+              <Mail size={14} strokeWidth={2.4} />
+            </a>
           </div>
         </div>
 
