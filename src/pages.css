@@ -1,3 +1,15 @@
+.sv-load-more {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.sv-load-more .btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+
 /* ============================================================
    PAGES STYLES (Marketplace, Services, Businesses, Agents,
    About, Contact, 404) + Download App modal

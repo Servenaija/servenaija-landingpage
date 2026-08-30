@@ -253,38 +253,38 @@ export const api = {
   },
 
   // ── Services: Categories + Providers ──────────────────────────────
-  async getServices(): Promise<{ categories: ServiceCategory[]; providers: Provider[] }> {
-    // Fetch all service categories
+  // Categories are fetched in a single request. Providers are NOT fetched
+  // upfront — they are loaded on demand per category (20 per page) via
+  // getProvidersByCategory() to avoid hundreds of parallel requests.
+  async getCategories(): Promise<ServiceCategory[]> {
     const catData = await request<{
       success: boolean
       data: BackendCategory[]
     }>('/public/categories')
 
-    const categories = catData.data.map(transformCategory)
+    return catData.data.map(transformCategory)
+  },
 
-    // Fetch providers for each category with limit=6 to show at least 6 per category
-    const providers: Provider[] = []
-    const categoriesToFetch = catData.data // fetch for ALL categories
-
-    const results = await Promise.allSettled(
-      categoriesToFetch.map((cat) =>
-        request<{
-          success: boolean
-          data: { providers: BackendProvider[] }
-        }>(`/public/categories/${encodeURIComponent(cat.name)}?limit=6`),
-      ),
-    )
-
-    for (const result of results) {
-      if (result.status === 'fulfilled') {
-        const provData = result.value
-        if (provData.success && provData.data?.providers) {
-          providers.push(...provData.data.providers.map(transformProvider))
-        }
+  // Fetch providers for ONE category, paginated (default 20 per page).
+  async getProvidersByCategory(
+    category: string,
+    page = 0,
+    limit = 20,
+  ): Promise<{ providers: Provider[]; total: number; pages: number; page: number }> {
+    const data = await request<{
+      success: boolean
+      data: {
+        providers: BackendProvider[]
+        pagination: { page: number; limit: number; total: number; pages: number }
       }
-    }
+    }>(`/public/categories/${encodeURIComponent(category)}?limit=${limit}&page=${page}`)
 
-    return { categories, providers }
+    return {
+      providers: (data.data?.providers ?? []).map(transformProvider),
+      total: data.data?.pagination?.total ?? 0,
+      pages: data.data?.pagination?.pages ?? 0,
+      page: data.data?.pagination?.page ?? page,
+    }
   },
 
   // ── Businesses: Stores ────────────────────────────────────────────
