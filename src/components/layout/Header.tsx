@@ -20,6 +20,7 @@ const legalItems = [
   { label: 'Terms & Conditions', to: '/terms' },
   { label: 'Refund Policy', to: '/refund-policy' },
   { label: 'Privacy Policy', to: '/privacy' },
+  { label: 'Delete Account', to: '/delete-account' },
 ]
 
 export default function Navbar({ className }: Props) {

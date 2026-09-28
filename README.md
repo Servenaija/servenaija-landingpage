@@ -97,6 +97,7 @@ VITE_API_URL=https://api.your-domain.com
 | `/terms` | `pages/Terms.tsx` | Terms and Conditions |
 | `/privacy` | `pages/Privacy.tsx` | Privacy Policy |
 | `/refund-policy` | `pages/RefundPolicy.tsx` | Refund Policy |
+| `/delete-account` | `pages/DeleteAccount.tsx` | Delete Account |
 | `/forgot-password` | `pages/ForgotPassword.tsx` | Forgot Password |
 | `/reset-password` | `pages/ResetPassword.tsx` | Reset Password |
 
@@ -144,7 +145,7 @@ Everything is in place — each page manages its own metadata:
 - **`src/components/SEO.tsx`** — a small component rendered at the top of every page. Props: `title`, `description`, `keywords`, `canonicalUrl`, `ogImage`, `ogType`. It updates `document.title`, meta description/keywords, canonical link, Open Graph and Twitter Card tags on mount.
 - **`index.html`** — static defaults + **JSON-LD structured data** (`Organization` + `WebSite`) for rich results.
 - **`public/robots.txt`** — allows all crawlers, disallows the two password pages, points to the sitemap.
-- **`public/sitemap.xml`** — lists all 10 public pages with priorities.
+- **`public/sitemap.xml`** — lists all 11 public pages with priorities.
 - Canonical URLs assume the production domain **`https://servenaija.com`** (`SITE_URL` in `SEO.tsx`). If the domain changes, update it there, in `robots.txt` and in `sitemap.xml`.
 
 ### Going live with search engines

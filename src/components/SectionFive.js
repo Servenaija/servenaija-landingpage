@@ -47,6 +47,7 @@ const supportLinks = [
     { label: 'Help Center', to: '/contact' },
     { label: 'Privacy Policy', to: '/privacy' },
     { label: 'Terms of Service', to: '/terms' },
+    { label: 'Delete Account', to: '/delete-account' },
     { label: 'FAQ', to: '/contact' },
     { label: 'Safety Center', to: '/contact' },
 ];

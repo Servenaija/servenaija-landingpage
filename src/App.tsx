@@ -7,6 +7,7 @@ import './pages.css'
 import RefundPolicyPage from './pages/RefundPolicy'
 import TermsPage from './pages/Terms'
 import PrivacyPage from './pages/Privacy'
+import DeleteAccountPage from './pages/DeleteAccount'
 import MarketplacePage from './pages/Marketplace'
 import ServicesPage from './pages/Services'
 import BusinessesPage from './pages/Businesses'
@@ -48,6 +49,7 @@ function App() {
             <Route path="/refund-policy" element={<RefundPolicyPage />} />
             <Route path="/terms" element={<TermsPage />} />
             <Route path="/privacy" element={<PrivacyPage />} />
+            <Route path="/delete-account" element={<DeleteAccountPage />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
