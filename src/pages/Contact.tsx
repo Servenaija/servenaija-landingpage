@@ -6,8 +6,8 @@ import { SEO } from '../components'
 
 const contactChannels = [
   { icon: '📧', title: 'Email us', lines: ['support@servenaija.com'], href: 'mailto:support@servenaija.com', linkText: 'support@servenaija.com' },
-  { icon: '📞', title: 'Call us', lines: ['+234 800 000 0000'], href: 'tel:+2348000000000', linkText: '+234 800 000 0000' },
-  { icon: '📍', title: 'Head office', lines: ['12 Marina Road, Lagos Island,', 'Lagos, Nigeria'] },
+  { icon: '📞', title: 'Call us', lines: ['+234 705 535 5730'], href: 'tel:+2347055355730', linkText: '+234 705 535 5730' },
+  { icon: '📍', title: 'Head office', lines: ['17, BASHIR FAKOREDE STREET HRC ESTATE,LEKKI, LAGOS STATE, NIGERIA'] },
   { icon: '🕘', title: 'Support hours', lines: ['Monday – Saturday', '8:00am – 8:00pm (WAT)'] },
 ]
 

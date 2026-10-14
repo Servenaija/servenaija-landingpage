@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import ceo from '../assets/ceo.png'
 import GMD from '../assets/gmd.png'
 import coo from '../assets/coo.png';
+import ciso from '../assets/ciso.png'
 
 type Props = { className?: string }
 
@@ -21,11 +22,18 @@ const leaders = [
     image: GMD,
   },
   {
-    name: 'Victoria Ekene N.',
+    name: 'Tosan Aig-Ohioma',
     role: 'Chief Operating Officer (COO)',
     bio: 'Operations strategist with expertise in process optimization, operational efficiency, and business scaling. She is responsible for driving seamless service delivery and ensuring ServeNaija\'s operations run at peak performance.',
     initials: 'TA',
     image: coo,
+  },
+  {
+    name: 'Omamie Odiete',
+    role: 'Chief Information Security Officer (CISO)',
+    bio: ' The Chief Information Security Officer (CISO) is responsible for protecting ServeNaija’s digital infrastructure, applications, customer information, business data, and internal systems against cyber threats, unauthorized access, data breaches, and other security risks. The CISO develops and enforces information security policies to ensure data confidentiality, integrity, availability, and regulatory compliance.',
+    initials: 'TA',
+    image: ciso,
   },
 ]
 
