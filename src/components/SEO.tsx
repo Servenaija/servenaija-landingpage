@@ -7,6 +7,8 @@ type SEOProps = {
   canonicalUrl?: string
   ogImage?: string
   ogType?: string
+  appStoreUrl?: string
+  googlePlayUrl?: string
 }
 
 const DEFAULT_TITLE = "ServeNaija - Africa's Trusted Digital Marketplace"
@@ -21,6 +23,8 @@ export default function SEO({
   canonicalUrl,
   ogImage = `${SITE_URL}/og-image.png`,
   ogType = 'website',
+  appStoreUrl,
+  googlePlayUrl,
 }: SEOProps) {
   useEffect(() => {
     // Update document title
@@ -47,7 +51,24 @@ export default function SEO({
     if (canonicalUrl) {
       updateCanonicalUrl(`${SITE_URL}${canonicalUrl}`)
     }
-  }, [title, description, keywords, canonicalUrl, ogImage, ogType])
+
+    // App store smart banner meta tags
+    if (appStoreUrl) {
+      const appId = appStoreUrl.match(/id(\d+)/)?.[1]
+      if (appId) {
+        updateMetaName(
+          'apple-itunes-app',
+          `app-id=${appId}, app-argument=${SITE_URL}`
+        )
+      }
+    }
+    if (googlePlayUrl) {
+      const packageName = googlePlayUrl.match(/id=([^&]+)/)?.[1]
+      if (packageName) {
+        updateMetaName('google-play-app', `app-id=${packageName}`)
+      }
+    }
+  }, [title, description, keywords, canonicalUrl, ogImage, ogType, appStoreUrl, googlePlayUrl])
 
   return null
 }

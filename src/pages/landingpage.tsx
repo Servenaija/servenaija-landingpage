@@ -17,6 +17,8 @@ export default function LandingPage() {
         description="ServeNaija - Africa's trusted digital marketplace. Shop products, book verified professionals, and grow your business. Connecting people, businesses, services and opportunities across Nigeria."
         keywords="ServeNaija, Nigeria marketplace, buy and sell, book services, verified professionals, African marketplace, online shopping Nigeria"
         canonicalUrl="/"
+        appStoreUrl="https://apps.apple.com/ng/app/servenaija/id6806989374"
+        googlePlayUrl="https://play.google.com/store/apps/details?id=com.servenaijacustomerandriod"
       />
 
       <ScrollRevealSection delay={0}>
