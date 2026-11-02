@@ -203,8 +203,22 @@ export default function FaqAndSiteFooterSection({ className }: Props) {
 
         <div className="section-five__download-block">
           <h3>Download app</h3>
-          <a href="#" className="section-five__store-badge" onClick={openStoreModal}>Google Play</a>
-          <a href="#" className="section-five__store-badge" onClick={openStoreModal}>App Store</a>
+          <a
+            href="https://play.google.com/store/apps/details?id=com.servenaijacustomerandriod"
+            className="section-five__store-badge"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Google Play
+          </a>
+          <a
+            href="https://apps.apple.com/ng/app/servenaija/id6806989374"
+            className="section-five__store-badge"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            App Store
+          </a>
         </div>
       </footer>
 

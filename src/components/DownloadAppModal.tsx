@@ -11,10 +11,6 @@ const perks = [
   { icon: '⚡', text: 'Instant confirmations & live tracking' },
 ]
 
-function preventNavigation(event: React.MouseEvent<HTMLAnchorElement>) {
-  event.preventDefault()
-}
-
 export default function DownloadAppModal() {
   const { isOpen, contextLabel, closeDownloadApp } = useDownloadApp()
   const closeButtonRef = useRef<HTMLButtonElement>(null)
@@ -85,22 +81,60 @@ export default function DownloadAppModal() {
           </ul>
 
           <div className="dl-modal__stores">
-            <a className="store-btn" href="#" onClick={preventNavigation}>
+            <a
+              className="store-btn"
+              href="https://play.google.com/store/apps/details?id=com.servenaijacustomerandriod"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <span className="store-btn__icon">
                 <img src={googlePlay} alt="" aria-hidden="true" />
               </span>
               <span className="store-btn__text">
                 <strong>Get it on</strong>
-                <span>Google Play</span>
+                <span>Google Play — Customer</span>
               </span>
             </a>
-            <a className="store-btn" href="#" onClick={preventNavigation}>
+            <a
+              className="store-btn"
+              href="https://apps.apple.com/ng/app/servenaija/id6806989374"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <span className="store-btn__icon">
                 <img src={appStore} alt="" aria-hidden="true" />
               </span>
               <span className="store-btn__text">
                 <strong>Download on the</strong>
-                <span>App Store</span>
+                <span>App Store — Customer</span>
+              </span>
+            </a>
+            <a
+              className="store-btn"
+              href="https://play.google.com/store/apps/details?id=com.servenaijaproviderandriod"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="store-btn__icon">
+                <img src={googlePlay} alt="" aria-hidden="true" />
+              </span>
+              <span className="store-btn__text">
+                <strong>Get it on</strong>
+                <span>Google Play — Provider</span>
+              </span>
+            </a>
+            <a
+              className="store-btn"
+              href="https://apps.apple.com/ng/app/servenaija-provider/id6806990093"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span className="store-btn__icon">
+                <img src={appStore} alt="" aria-hidden="true" />
+              </span>
+              <span className="store-btn__text">
+                <strong>Download on the</strong>
+                <span>App Store — Provider</span>
               </span>
             </a>
           </div>

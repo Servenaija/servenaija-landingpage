@@ -1,17 +1,9 @@
 import { Link } from 'react-router-dom'
-import { useDownloadApp } from '../context/useDownloadApp'
 import showroomImage from '../assets/showroom.png'
 
 type Props = { className?: string }
 
 export default function HeroBody({ className }: Props) {
-  const { openDownloadApp } = useDownloadApp()
-
-  const openStoreModal = (event: React.MouseEvent<HTMLAnchorElement>) => {
-    event.preventDefault()
-    openDownloadApp()
-  }
-
   return (
     <header className={`hero-header ${className ?? ''}`.trim()}>
       <div className="hero-header__body">
@@ -26,16 +18,28 @@ export default function HeroBody({ className }: Props) {
             quality products all from one secure platform.
           </p>
 
-          {/* Store buttons open the download-app interstitial */}
+          {/* Store buttons link directly to the ServeNaija customer apps */}
           <div className="hero-header__store-buttons" aria-label="Download links">
-            <a href="#" aria-label="Get it on Google Play" onClick={openStoreModal} style={{ textDecoration: 'none' }}>
+            <a
+              href="https://play.google.com/store/apps/details?id=com.servenaijacustomerandriod"
+              aria-label="Get ServeNaija Customer on Google Play"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none' }}
+            >
               <img
                 src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg"
                 alt="Get it on Google Play"
                 style={{ height: 52 }}
               />
             </a>
-            <a href="#" aria-label="Download on the App Store" onClick={openStoreModal} style={{ textDecoration: 'none' }}>
+            <a
+              href="https://apps.apple.com/ng/app/servenaija/id6806989374"
+              aria-label="Download ServeNaija Customer on the App Store"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ textDecoration: 'none' }}
+            >
               <img
                 src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
                 alt="Download on the App Store"
