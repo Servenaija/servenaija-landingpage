@@ -1,0 +1,29 @@
+# version: '3.8'
+
+# services:
+#   frontend:
+#     build:
+#       context: .
+#       dockerfile: Dockerfile
+#     container_name: servenaija_frontend
+#     ports:
+#       - "80:80"
+#       - "443:443"
+#     volumes:
+#       - /etc/letsencrypt:/etc/letsencrypt:ro
+#     restart: always
+
+version: '3.8'
+services:
+  frontend:
+    build: .
+    container_name: servenaija_frontend
+    restart: always
+    expose:
+      - "80"
+    networks:
+      - servenaija_network
+
+networks:
+  servenaija_network:
+    external: true
