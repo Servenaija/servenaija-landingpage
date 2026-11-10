@@ -229,10 +229,10 @@ export const api = {
         });
     },
     // ── Auth: Reset Password (via magic link token) ───────────────────
-    resetPassword(email, token, password, type) {
+    resetPassword(email, token, password, confirmPassword, type) {
         return request('/auth/reset-password', {
             method: 'POST',
-            body: JSON.stringify({ email, token, password, type }),
+            body: JSON.stringify({ email, token, password, confirmPassword, type }),
         });
     },
 };

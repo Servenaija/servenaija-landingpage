@@ -27,7 +27,15 @@ async function request<T>(path: string, init?: RequestInit): Promise<T> {
   }
 
   if (!response.ok) {
-    throw new Error(`API error ${response.status}`)
+    // Extract the actual error message from the API response body
+    let errorMessage = `API error ${response.status}`
+    try {
+      const errorData = await response.json()
+      if (errorData?.message) errorMessage = errorData.message
+      else if (errorData?.msg) errorMessage = errorData.msg
+      else if (errorData?.error) errorMessage = errorData.error
+    } catch {}
+    throw new Error(errorMessage)
   }
 
   return (await response.json()) as T
@@ -325,11 +333,12 @@ export const api = {
     email: string,
     token: string,
     password: string,
+    confirmPassword: string,
     type: string,
   ): Promise<{ status: boolean; message: string }> {
     return request<{ status: boolean; message: string }>('/auth/reset-password', {
       method: 'POST',
-      body: JSON.stringify({ email, token, password, type }),
+      body: JSON.stringify({ email, token, password, confirmPassword, type }),
     })
   },
 }

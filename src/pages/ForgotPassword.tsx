@@ -29,9 +29,9 @@ export default function ForgotPasswordPage() {
         setStatus('error')
         setMessage(res.message || 'Something went wrong. Please try again.')
       }
-    } catch {
+    } catch (e: any) {
       setStatus('error')
-      setMessage('Could not reach the server. Please check your connection and try again.')
+      setMessage(e.message || 'Could not reach the server. Please check your connection and try again.')
     }
   }
 

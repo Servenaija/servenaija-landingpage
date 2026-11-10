@@ -49,7 +49,7 @@ export default function ResetPasswordPage() {
     setMessage('')
 
     try {
-      const res = await api.resetPassword(email, token, password, type)
+      const res = await api.resetPassword(email, token, password, confirmPassword, type)
       if (res.status) {
         setStatus('success')
         setMessage(res.message || 'Password reset successfully! You can now sign in.')
@@ -61,9 +61,9 @@ export default function ResetPasswordPage() {
         setStatus('error')
         setMessage(res.message || 'Something went wrong. Please try again.')
       }
-    } catch {
+    } catch (e: any) {
       setStatus('error')
-      setMessage('Could not reach the server. Please check your connection and try again.')
+      setMessage(e.message || 'Could not reach the server. Please check your connection and try again.')
     }
   }
 
